@@ -9,7 +9,7 @@
 <ion-content>
     <ion-list>
 
-      <ion-item *ngFor="let parque of parques">
+      <ion-item *ngFor="let parque of parques" (click)="irADetalle(parque)">
         <ion-label>
           <ion-text>
             <p>{{ parque.nombre | uppercase }}</p>

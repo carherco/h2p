@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Parque } from 'src/app/model/parque';
 import { ParquesService } from 'src/app/servicios/parques.service';
 import { DistanciaService } from 'src/app/servicios/distancia.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -15,10 +16,23 @@ export class Tab1Page {
 
   constructor(
     private parquesService: ParquesService,
-    private distanciaService: DistanciaService
+    private distanciaService: DistanciaService,
+    private router: Router
   ) {
-    this.parques = this.parquesService.get();
-    this.calcularDistancias();
+    
+    // this.parquesService.get().then(
+    //   x => {
+    //     this.parques = x;
+    //     this.calcularDistancias();
+    //   }
+    // );
+ 
+    this.parquesService.get().subscribe(
+      (x: Parque[]) => {
+        this.parques = x;
+        this.calcularDistancias();
+      },
+    );
   }
 
   private calcularDistancias() {
@@ -33,6 +47,11 @@ export class Tab1Page {
         return { ...item, distancia };
       }
     );
+  }
+
+  irADetalle(parque: Parque) {
+    this.parquesService.setParqueSeleccionado(parque);
+    this.router.navigate( ['/detalle'] );
   }
 
 }
