@@ -7,9 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactoPage implements OnInit {
 
-  constructor() { }
+  contacto = {
+    nombre: 'h2p',
+    email: 'h2p@h2p.com',
+    direccion: 'Avenida de ',
+    telefono: '111-222-333-444'
+  };
+
+  constructor() {
+    setTimeout(
+      () => this.contacto.nombre = 'hack2progress',
+      3000
+    );
+  }
 
   ngOnInit() {
+  }
+
+  cambiarNombre() {
+    this.contacto.nombre = 'Hack2Progress';
   }
 
 }

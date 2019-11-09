@@ -5,7 +5,25 @@
 </ion-header>
 
 <ion-content>
-  <ion-button>Default</ion-button>
   
+  <ion-list>
+    <h2>{{ contacto.nombre }}</h2>
+    <ion-item>
+      <ion-label>{{ contacto?.direccion }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{ contacto.email }}</ion-label>
+    </ion-item>
+    <ion-item *ngIf="contacto?.nombre">
+      <ion-label>{{ contacto.telefono }}</ion-label>
+    </ion-item>
+  </ion-list>
+  
+  <input [value]="contacto.nombre">
+  <input [(ngModel)]="contacto.nombre">
+  <ion-button (click)="cambiarNombre()">Default</ion-button>
+  
+
+
   <app-galeria></app-galeria>
 </ion-content>
