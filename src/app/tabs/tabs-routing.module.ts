@@ -38,6 +38,9 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'contacto',
+        loadChildren: './contacto/contacto.module#ContactoPageModule' },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
